@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const path = require('path');
+
 module.exports = {
   env: {
     browser: true,
@@ -20,6 +23,14 @@ module.exports = {
     project: './tsconfig.json'
   },
   plugins: ['react', '@typescript-eslint'],
+  settings: {
+    'import/resolver': {
+      alias: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        map: [['@', path.join(__dirname, 'src')]]
+      }
+    }
+  },
   rules: {
     '@typescript-eslint/no-unused-vars': 'error',
     '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
