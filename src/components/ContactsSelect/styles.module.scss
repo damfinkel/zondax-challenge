@@ -1,0 +1,58 @@
+@import '@/styles/colors.scss';
+
+.contactsSelectContainer {
+  background-color: #f5f8fa;
+  border: 1px solid #cbd6e2;
+  border-radius: 2px;
+  padding: 1rem 0 0 1rem;
+  overflow: hidden;
+}
+
+.contactsSelectHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.contactsSelectTitle {
+  flex: 1 1 0;
+}
+
+.check {
+  width: 1rem;
+  path {
+    fill: $dark-grey;
+  }
+}
+
+.arrowUp {
+  width: 1.125rem;
+  transition: transform 250ms ease-in;
+
+  &.open {
+    transform: rotate(180deg);
+  }
+}
+
+.checkboxList {
+  display: flex;
+  flex-direction: column;
+  max-height: 0;
+  transition: max-height 250ms ease-in-out;
+  overflow-y: scroll;
+  padding-right: 1rem;
+}
+
+.checkboxRow {
+  height: 1.875rem;
+  display: flex;
+  gap: 1.125rem;
+  padding-bottom: 1rem;
+}
+
+.checkboxOption,
+.contactsSelectContainer {
+  font-weight: 400;
+  font-size: 16px;
+}

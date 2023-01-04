@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import cn from 'classnames';
+import { useState } from 'react';
 
 import SyncProvider from '@/components/SyncProvider';
 import { ReactComponent as GmailIcon } from '@/assets/ic_gmail.svg';
@@ -11,6 +12,12 @@ import styles from './styles.module.scss';
 
 function SyncContacts() {
   const { t } = useTranslation();
+  const [syncDone, setSyncDone] = useState(false);
+
+  const handleSync = () => {
+    // Sync data
+    setSyncDone(true);
+  };
 
   return (
     <main className={styles.syncProviderContainer}>
@@ -21,12 +28,16 @@ function SyncContacts() {
           icon={<GmailIcon />}
         />
         <div className={styles.buttonContainer}>
-          <button type="button" className={styles.syncButton}>
+          <button
+            type="button"
+            className={styles.syncButton}
+            onClick={handleSync}
+          >
             <ArrowLeftIcon />
             <ArrowRightIcon />
           </button>
           <h3 className={cn('title', styles.syncButtonTitle)}>
-            {t('syncContacts')}
+            {t(syncDone ? 'allDone' : 'syncContacts')}
           </h3>
         </div>
         <SyncProvider

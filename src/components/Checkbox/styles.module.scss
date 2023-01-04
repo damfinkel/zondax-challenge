@@ -1,0 +1,43 @@
+@import '@/styles/colors.scss';
+
+.checkbox {
+  position: relative;
+  display: flex;
+  width: 0.875rem;
+  height: 0.875rem;
+}
+
+.checkboxInput {
+  cursor: pointer;
+  appearance: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.checkmark {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  border: 2px solid $dark-grey;
+  border-radius: 2px;
+
+  &.selected {
+    background-color: $dark-grey;
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    background: url('../../assets/ic_check.svg') center/cover no-repeat;
+    left: 1%;
+    right: 1%;
+    top: 1%;
+    bottom: 1%;
+  }
+}

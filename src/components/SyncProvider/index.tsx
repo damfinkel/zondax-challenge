@@ -2,6 +2,8 @@ import { ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import cn from 'classnames';
 
+import ContactsSelect from '@/components/ContactsSelect';
+
 import styles from './styles.module.scss';
 
 interface Props {
@@ -20,7 +22,7 @@ function SyncProvider({ title, targetServiceName, icon }: Props) {
       <p className={cn('description', styles.description)}>
         {t('syncDescription', { origin: title, target: targetServiceName })}
       </p>
-      <p>All contacts</p>
+      <ContactsSelect />
     </div>
   );
 }

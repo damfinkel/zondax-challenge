@@ -14,7 +14,11 @@ i18n
       en: {
         translation: {
           syncDescription: 'These {{origin}} contacts will sync to {{target}}',
-          syncContacts: 'Sync Contacts'
+          syncContacts: 'Sync Contacts',
+          family: 'Family',
+          work_friends: 'Work Friends',
+          another_label: 'Another Label',
+          fourth_label: 'Fourth Label'
         }
       }
     },
