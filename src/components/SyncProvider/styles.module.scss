@@ -1,0 +1,37 @@
+// I usually have a colors file with all the variables
+// Usually most borders have the same color, but it's not the case in this app
+// These borders aren't being shared with any other component atm
+$container-border-color: #dfe3eb;
+$icon-border-color: #d1dbe6;
+
+.syncContactsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $container-border-color;
+  padding: 4rem 2.188rem;
+  width: 17.813rem;
+  max-width: 17.813rem;
+  background-color: white;
+}
+
+.icon {
+  border: 1px solid $icon-border-color;
+  height: 4.125rem;
+  width: 4.125rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.438rem;
+}
+
+.title {
+  margin-bottom: 0.875rem;
+}
+
+.description {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
