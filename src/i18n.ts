@@ -18,7 +18,8 @@ i18n
           family: 'Family',
           work_friends: 'Work Friends',
           another_label: 'Another Label',
-          fourth_label: 'Fourth Label'
+          fourth_label: 'Fourth Label',
+          allDone: 'All Done!'
         }
       }
     },

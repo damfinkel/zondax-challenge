@@ -33,8 +33,8 @@ function SyncContacts() {
             className={styles.syncButton}
             onClick={handleSync}
           >
-            <ArrowLeftIcon />
-            <ArrowRightIcon />
+            {syncDone ? <ArrowRightIcon /> : <ArrowLeftIcon />}
+            {syncDone ? <ArrowLeftIcon /> : <ArrowRightIcon />}
           </button>
           <h3 className={cn('title', styles.syncButtonTitle)}>
             {t(syncDone ? 'allDone' : 'syncContacts')}
