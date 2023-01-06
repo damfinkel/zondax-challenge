@@ -10,9 +10,19 @@ interface Props {
   title: string;
   targetServiceName: string;
   icon: ReactElement;
+  options: string[];
+  onSelectItem: (option: string) => void;
+  selectedOptions: Record<string, boolean>;
 }
 
-function SyncProvider({ title, targetServiceName, icon }: Props) {
+function SyncProvider({
+  title,
+  targetServiceName,
+  icon,
+  options,
+  onSelectItem,
+  selectedOptions
+}: Props) {
   const { t } = useTranslation();
 
   return (
@@ -22,7 +32,12 @@ function SyncProvider({ title, targetServiceName, icon }: Props) {
       <p className={cn('description', styles.description)}>
         {t('syncDescription', { origin: title, target: targetServiceName })}
       </p>
-      <ContactsSelect id={title} />
+      <ContactsSelect
+        id={title}
+        options={options}
+        onSelectItem={onSelectItem}
+        selectedOptions={selectedOptions}
+      />
     </div>
   );
 }
