@@ -10,7 +10,11 @@ import Checkbox from '@/components/Checkbox';
 import styles from './styles.module.scss';
 import { CONTACT_OPTIONS, MAX_LIST_HEIGHT } from './constants';
 
-function ContactsSelect() {
+interface Props {
+  id: string;
+}
+
+function ContactsSelect({ id }: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState(
     CONTACT_OPTIONS.reduce((result, option) => {
@@ -48,10 +52,11 @@ function ContactsSelect() {
         {CONTACT_OPTIONS.map((option) => (
           <li key={option} className={styles.checkboxRow}>
             <Checkbox
+              id={`list-${id}-option-${option}`}
+              label={t(option)}
               isSelected={selectedOptions[option]}
               onChange={() => handleSelectCheckbox(option)}
             />
-            <p className={styles.contactsSelectTitle}>{t(option)}</p>
           </li>
         ))}
       </ul>

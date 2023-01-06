@@ -22,7 +22,7 @@ function SyncProvider({ title, targetServiceName, icon }: Props) {
       <p className={cn('description', styles.description)}>
         {t('syncDescription', { origin: title, target: targetServiceName })}
       </p>
-      <ContactsSelect />
+      <ContactsSelect id={title} />
     </div>
   );
 }
