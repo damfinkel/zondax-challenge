@@ -5,7 +5,7 @@
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
+    "@testing-library/user-event": "^14.0.0",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.11",
     "@types/react": "^18.0.26",
@@ -27,7 +27,8 @@
     "eject": "craco eject",
     "lint": "tsc --project ./tsconfig.json --noEmit && eslint --ext .js,.ts,.tsx .",
     "lint-fix": "eslint --ext .js,.ts,.tsx,.jsx . --fix",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "coverage": "npm test -- --coverage --watchAll=false --collectCoverageFrom=\"./src/**\""
   },
   "eslintConfig": {
     "extends": [
@@ -64,5 +65,17 @@
     "husky": "^8.0.3",
     "prettier": "^2.8.1",
     "sass": "^1.57.1"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "@/(.*)": "<rootDir>/src/$1"
+    },
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/src/setupTests.ts",
+      "<rootDir>/src/reportWebVitals.ts",
+      "<rootDir>/src/App.ts",
+      "<rootDir>/src/index.ts",
+      "<rootDir>/src/i18n.ts"
+    ]
   }
 }
