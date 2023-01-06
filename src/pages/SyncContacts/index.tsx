@@ -55,6 +55,7 @@ function SyncContacts() {
             type="button"
             className={styles.syncButton}
             onClick={handleSync}
+            aria-label={t(syncDone ? 'allDone' : 'syncContacts') as string}
           >
             {syncDone ? <ArrowRightIcon /> : <ArrowLeftIcon />}
             {syncDone ? <ArrowLeftIcon /> : <ArrowRightIcon />}
