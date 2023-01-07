@@ -27,7 +27,6 @@ function ContactsSelect({ id, options, onSelectItem, selectedOptions }: Props) {
   };
 
   const handleSelectCheckbox = (option: string) => {
-    // setSelectedOptions((prev) => ({ ...prev, [option]: !prev[option] }));
     onSelectItem(option);
   };
 

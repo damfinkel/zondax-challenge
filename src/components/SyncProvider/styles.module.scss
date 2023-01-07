@@ -36,11 +36,16 @@ $icon-border-color: #d1dbe6;
 .description {
   text-align: center;
   margin-bottom: 1.5rem;
+  padding: 0 0.125rem;
 }
 
 @media screen and (max-width: $screen-md) {
   .syncContactsContainer {
     padding: 4rem 2rem;
-    width: 15rem;
+    width: 17rem;
+  }
+
+  .description {
+    padding: 0 0.125rem;
   }
 }

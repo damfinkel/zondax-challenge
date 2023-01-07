@@ -19,6 +19,9 @@ i18n
           work_friends: 'Work Friends',
           another_label: 'Another Label',
           fourth_label: 'Fourth Label',
+          close_friends: 'Close Friends',
+          food_places: 'Food Places',
+          work: 'Work',
           allDone: 'All Done!'
         }
       }

@@ -6,6 +6,7 @@
   border-radius: 2px;
   padding: 1rem 0 0 1rem;
   overflow: hidden;
+  width: 100%;
 }
 
 .contactsSelectHeader {
@@ -13,10 +14,15 @@
   align-items: center;
   gap: 1rem;
   margin-bottom: 1rem;
+  justify-content: space-between;
+  width: 100%;
+  padding-right: 1rem;
 }
 
 .contactsSelectTitle {
   flex: 1 1 0;
+  text-align: start;
+  font-size: 1rem;
 }
 
 .check {
