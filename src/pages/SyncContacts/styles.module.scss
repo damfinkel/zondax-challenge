@@ -37,6 +37,18 @@
   font-weight: 400;
 }
 
+.arrow {
+  path {
+    fill: #002050;
+  }
+
+  &.arrowActive {
+    path {
+      fill: #f3785b;
+    }
+  }
+}
+
 @media screen and (max-width: $screen-md) {
   .syncContent {
     flex-direction: column;

@@ -57,8 +57,12 @@ function SyncContacts() {
             onClick={handleSync}
             aria-label={t(syncDone ? 'allDone' : 'syncContacts') as string}
           >
-            {syncDone ? <ArrowRightIcon /> : <ArrowLeftIcon />}
-            {syncDone ? <ArrowLeftIcon /> : <ArrowRightIcon />}
+            <ArrowLeftIcon
+              className={cn(styles.arrow, { [styles.arrowActive]: syncDone })}
+            />
+            <ArrowRightIcon
+              className={cn(styles.arrow, { [styles.arrowActive]: !syncDone })}
+            />
           </button>
           <h3 className={cn('title', styles.syncButtonTitle)}>
             {t(syncDone ? 'allDone' : 'syncContacts')}
