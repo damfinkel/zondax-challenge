@@ -1,3 +1,5 @@
+@import '@/styles/breakpoints.scss';
+
 // I usually have a colors file with all the variables
 // Usually most borders have the same color, but it's not the case in this app
 // These borders aren't being shared with any other component atm
@@ -10,7 +12,7 @@ $icon-border-color: #d1dbe6;
   justify-content: center;
   align-items: center;
   border: 1px solid $container-border-color;
-  padding: 4rem 2.188rem;
+  padding: 4rem 2rem;
   width: 17.813rem;
   max-width: 17.813rem;
   background-color: white;
@@ -34,4 +36,11 @@ $icon-border-color: #d1dbe6;
 .description {
   text-align: center;
   margin-bottom: 1.5rem;
+}
+
+@media screen and (max-width: $screen-md) {
+  .syncContactsContainer {
+    padding: 4rem 2rem;
+    width: 15rem;
+  }
 }

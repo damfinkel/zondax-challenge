@@ -35,7 +35,7 @@ function SyncContacts() {
   };
 
   return (
-    <main className={styles.syncProviderContainer}>
+    <main className={styles.syncContactsContainer}>
       <div className={styles.syncContent}>
         <SyncProvider
           title="Gmail"
