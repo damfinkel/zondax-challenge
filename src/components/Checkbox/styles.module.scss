@@ -31,7 +31,7 @@
     background-color: $dark-grey;
   }
 
-  &:after {
+  &.selected:after {
     content: '';
     position: absolute;
     background: url('../../assets/ic_check.svg') center/cover no-repeat;
