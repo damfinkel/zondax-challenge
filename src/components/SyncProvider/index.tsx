@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ReactElement, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import cn from 'classnames';
 
@@ -24,6 +24,7 @@ function SyncProvider({
   selectedOptions
 }: Props) {
   const { t } = useTranslation();
+  const [isSelectOpen, setIsSelectOpen] = useState(false);
 
   return (
     <div className={styles.syncContactsContainer}>
@@ -34,6 +35,8 @@ function SyncProvider({
       </p>
       <ContactsSelect
         id={title}
+        isOpen={isSelectOpen}
+        onOpenChange={() => setIsSelectOpen((prev) => !prev)}
         options={options}
         onSelectItem={onSelectItem}
         selectedOptions={selectedOptions}

@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import cn from 'classnames';
 import { useTranslation } from 'react-i18next';
 
@@ -15,15 +14,22 @@ interface Props {
   onSelectItem: (selectedOptions: string) => void;
   selectedOptions: Record<string, boolean>;
   options: string[];
+  isOpen: boolean;
+  onOpenChange: () => void;
 }
 
-function ContactsSelect({ id, options, onSelectItem, selectedOptions }: Props) {
-  const [isOpen, setIsOpen] = useState(false);
-
+function ContactsSelect({
+  id,
+  options,
+  onSelectItem,
+  selectedOptions,
+  isOpen,
+  onOpenChange
+}: Props) {
   const { t } = useTranslation();
 
   const handleSelectClick = () => {
-    setIsOpen((prev) => !prev);
+    onOpenChange();
   };
 
   const handleSelectCheckbox = (option: string) => {

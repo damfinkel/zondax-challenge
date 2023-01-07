@@ -68,7 +68,7 @@ function SyncContacts() {
             type="button"
             className={cn(styles.syncButton, { [styles.syncing]: syncLoading })}
             onClick={handleSync}
-            aria-label={t('syncContacts') as string}
+            aria-label={getButtonTitle()}
             disabled={syncDone}
           >
             <ArrowLeftIcon

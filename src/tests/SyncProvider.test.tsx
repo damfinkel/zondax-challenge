@@ -4,6 +4,7 @@ import { ReactComponent as GmailIcon } from '@/assets/ic_gmail.svg';
 import { I18nextProvider } from 'react-i18next';
 import i18n from '@/i18n';
 import userEvent from '@testing-library/user-event';
+import { MAX_LIST_HEIGHT } from '@/components/ContactsSelect/constants';
 
 const user = userEvent.setup();
 const options = ['foo', 'bar'];
@@ -52,5 +53,30 @@ describe('when initializing', () => {
     await user.click(item);
 
     expect(onSelectItem).toBeCalledWith('foo');
+  });
+});
+
+describe('when select is open and header is clicked', () => {
+  test('it opens the dropdown', async () => {
+    const onSelectItem = jest.fn();
+
+    render(
+      <SyncProvider
+        icon={<GmailIcon />}
+        title={title}
+        targetServiceName={targetServiceName}
+        options={options}
+        selectedOptions={selectedOptions}
+        onSelectItem={onSelectItem}
+      />
+    );
+
+    const headerButton = screen.getByRole('button');
+
+    await user.click(headerButton);
+
+    const list = screen.getByRole('list');
+
+    expect(list.style.maxHeight).toBe(MAX_LIST_HEIGHT);
   });
 });

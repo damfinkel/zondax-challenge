@@ -2,7 +2,6 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import ContactsSelect from '@/components/ContactsSelect';
 import userEvent from '@testing-library/user-event';
-import { MAX_LIST_HEIGHT } from '@/components/ContactsSelect/constants';
 
 const user = userEvent.setup();
 const options = ['foo', 'bar'];
@@ -13,6 +12,8 @@ describe('when select initializes', () => {
     const onSelectItem = jest.fn();
     render(
       <ContactsSelect
+        isOpen={false}
+        onOpenChange={jest.fn()}
         id="foo"
         options={options}
         selectedOptions={selectedOptions}
@@ -26,11 +27,15 @@ describe('when select initializes', () => {
 });
 
 describe('when select is closed and header is clicked', () => {
-  test('it shows the checkbox list', async () => {
+  test('calls the onOpenChange method', async () => {
     const onSelectItem = jest.fn();
+    const onOpenChange = jest.fn();
+
     render(
       <ContactsSelect
         id="foo"
+        isOpen={false}
+        onOpenChange={onOpenChange}
         options={options}
         selectedOptions={selectedOptions}
         onSelectItem={onSelectItem}
@@ -40,18 +45,21 @@ describe('when select is closed and header is clicked', () => {
     const headerButton = screen.getByRole('button');
 
     await user.click(headerButton);
-    const list = screen.getByRole('list');
 
-    expect(list.style.maxHeight).toBe(MAX_LIST_HEIGHT);
+    expect(onOpenChange).toBeCalled();
   });
 });
 
 describe('when select is open and header is clicked', () => {
-  test('it hides the checkbox list', async () => {
+  test('it calls the onOpenChange method', async () => {
     const onSelectItem = jest.fn();
+    const onOpenChange = jest.fn();
+
     render(
       <ContactsSelect
         id="foo"
+        isOpen
+        onOpenChange={onOpenChange}
         options={options}
         selectedOptions={selectedOptions}
         onSelectItem={onSelectItem}
@@ -61,10 +69,8 @@ describe('when select is open and header is clicked', () => {
     const headerButton = screen.getByRole('button');
 
     await user.click(headerButton);
-    await user.click(headerButton);
-    const list = screen.getByRole('list');
 
-    expect(list.style.maxHeight).toBe('0');
+    expect(onOpenChange).toBeCalled();
   });
 });
 
@@ -74,6 +80,8 @@ describe('when a checkbox is selected', () => {
     render(
       <ContactsSelect
         id="foo"
+        isOpen
+        onOpenChange={jest.fn()}
         options={options}
         selectedOptions={selectedOptions}
         onSelectItem={onSelectItem}
