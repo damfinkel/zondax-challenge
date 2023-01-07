@@ -18,6 +18,7 @@ import {
 function SyncContacts() {
   const { t } = useTranslation();
   const [syncDone, setSyncDone] = useState(false);
+  const [syncLoading, setSyncLoading] = useState(false);
 
   // Could handle this, options and handler with Context
   // But I like that the SyncProvider could be reused somewhere else
@@ -31,7 +32,19 @@ function SyncContacts() {
 
   const handleSync = () => {
     // Sync data using gmailSelectedOptions and mailChimpSelectedOptions
-    setSyncDone(true);
+    // Faking it with a setTimeout
+    setSyncLoading(true);
+    setTimeout(() => {
+      setSyncLoading(false);
+      setSyncDone(true);
+    }, 5000);
+  };
+
+  const getButtonTitle = () => {
+    if (syncDone) {
+      return t('allDone');
+    }
+    return t(syncLoading ? 'loading' : 'syncContacts');
   };
 
   return (
@@ -53,19 +66,26 @@ function SyncContacts() {
         <div className={styles.buttonContainer}>
           <button
             type="button"
-            className={styles.syncButton}
+            className={cn(styles.syncButton, { [styles.syncing]: syncLoading })}
             onClick={handleSync}
-            aria-label={t(syncDone ? 'allDone' : 'syncContacts') as string}
+            aria-label={t('syncContacts') as string}
+            disabled={syncDone}
           >
             <ArrowLeftIcon
-              className={cn(styles.arrow, { [styles.arrowActive]: syncDone })}
+              className={cn(styles.arrow, styles.arrowTop, {
+                [styles.arrowActive]: syncDone,
+                [styles.syncing]: syncLoading
+              })}
             />
             <ArrowRightIcon
-              className={cn(styles.arrow, { [styles.arrowActive]: !syncDone })}
+              className={cn(styles.arrow, styles.arrowBottom, {
+                [styles.arrowActive]: !syncDone,
+                [styles.syncing]: syncLoading
+              })}
             />
           </button>
           <h3 className={cn('title', styles.syncButtonTitle)}>
-            {t(syncDone ? 'allDone' : 'syncContacts')}
+            {getButtonTitle()}
           </h3>
         </div>
         <SyncProvider

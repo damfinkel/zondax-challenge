@@ -1,5 +1,62 @@
 @import '@/styles/breakpoints.scss';
 
+$arrow-active: #f3785b;
+$arrow-inactive: #002050;
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes enlargeTop {
+  0% {
+    transform: scale(1);
+  }
+
+  25% {
+    transform: scale(0.95);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+
+  75% {
+    transform: scale(1.05);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes enlargeBottom {
+  0% {
+    transform: scale(1);
+  }
+
+  25% {
+    transform: scale(1.05);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+
+  75% {
+    transform: scale(0.95);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
 .syncContactsContainer {
   width: 100%;
   height: 100%;
@@ -26,10 +83,30 @@
 }
 
 .syncButton {
-  width: 8.25rem;
-  height: 8.25rem;
+  width: 7.75rem;
+  height: 7.75rem;
   border-radius: 50%;
   background-color: white;
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    border: 4px solid transparent;
+    background-color: white;
+    transition: background-color 250ms ease-in;
+  }
+
+  &.syncing:before {
+    background: linear-gradient(#fff, #fff) padding-box,
+      linear-gradient(45deg, $arrow-active, $arrow-inactive) border-box;
+    animation: spin 1.5s linear infinite;
+  }
 }
 
 .syncButtonTitle {
@@ -38,14 +115,26 @@
 }
 
 .arrow {
+  position: relative;
+
   path {
-    fill: #002050;
+    fill: $arrow-inactive;
   }
 
   &.arrowActive {
     path {
-      fill: #f3785b;
+      fill: $arrow-active;
     }
+  }
+
+  &.arrowTop.syncing {
+    animation: enlargeTop 1.5s linear infinite;
+    animation-fill-mode: forwards;
+  }
+
+  &.arrowBottom.syncing {
+    animation: enlargeBottom 1.5s linear infinite;
+    animation-fill-mode: both;
   }
 }
 

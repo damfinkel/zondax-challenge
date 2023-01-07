@@ -22,7 +22,8 @@ i18n
           close_friends: 'Close Friends',
           food_places: 'Food Places',
           work: 'Work',
-          allDone: 'All Done!'
+          allDone: 'All Done!',
+          loading: 'Loading...'
         }
       }
     },
